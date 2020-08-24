@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+
 module.exports = {
   configureWebpack: {
     module: {
@@ -11,7 +13,13 @@ module.exports = {
           ]
         }
       ]
-    }
+    },
+    plugins: [
+      new webpack.ProvidePlugin({
+        'window.THREE': 'three',
+        THREE: 'three'
+      })
+    ]
   }
 }
 
