@@ -128,6 +128,20 @@ let routes = [
         component: () => import('../components/sprite/anime/anime.vue')
       }
     ]
+  },
+  {
+    name: 'reprint',
+    text: '复刻场景',
+    path: '/reprint',
+    component: () => import('../components/reprint'),
+    children: [
+      {
+        name: 'scatter',
+        text: '星云',
+        path: 'scatter',
+        component: () => import('../components/reprint/scatter/scatter.vue')
+      }
+    ]
   }
 ]
 
