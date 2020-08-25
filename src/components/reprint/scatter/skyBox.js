@@ -1,7 +1,7 @@
 /*
  * @Author: chenhua
  * @Date: 2020-08-24 16:30:30
- * @LastEditTime: 2020-08-24 21:30:23
+ * @LastEditTime: 2020-08-25 15:19:21
  * @Description: 天空盒
  * @FilePath: /three-learning/src/components/reprint/scatter/skyBox.js
  */
@@ -41,7 +41,7 @@ class SkyBox {
     let w = dom.clientWidth, h = dom.clientHeight;
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(60, w / h, 0.1, 1000);
-    this.camera.position.z = 10;
+    this.camera.position.z = 100;
     this.camera.position.y = 10;
     this.renderer = new THREE.WebGLRenderer({ antialias: true })
     this.renderer.setSize(w, h);

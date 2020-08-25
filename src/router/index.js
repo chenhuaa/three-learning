@@ -140,6 +140,12 @@ let routes = [
         text: '星云',
         path: 'scatter',
         component: () => import('../components/reprint/scatter/scatter.vue')
+      },
+      {
+        name: 'test',
+        text: '星云test',
+        path: 'test',
+        component: () => import('../components/reprint/test/test.vue')
       }
     ]
   }

@@ -1,7 +1,7 @@
 /*
  * @Author: chenhua
  * @Date: 2020-08-11 16:45:37
- * @LastEditTime: 2020-08-24 21:29:57
+ * @LastEditTime: 2020-08-25 17:04:41
  * @Description: 精灵
  * @FilePath: /three-learning/src/components/reprint/scatter/sprite.js
  */
@@ -29,6 +29,9 @@ class Sprite {
       new THREE.SpriteMaterial({
         map: new THREE.TextureLoader().load(this.options.image),
         transparent: true,
+        blending: THREE.NormalBlending,
+        depthWrite: false,
+        // alphaTest: 1.0
         // blending: THREE.AdditiveBlending,
       })
     )

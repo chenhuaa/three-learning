@@ -1,7 +1,7 @@
 /*
  * @Author: chenhua
  * @Date: 2020-08-21 17:41:28
- * @LastEditTime: 2020-08-24 21:30:58
+ * @LastEditTime: 2020-08-25 17:50:49
  * @Description: 星球轨道
  * @FilePath: /three-learning/src/components/reprint/scatter/track.js
  */
@@ -50,7 +50,7 @@ class Track {
       vertexShader: vs,
       fragmentShader: fs,
       depthWrite: false,
-      blending: THREE.AdditiveBlending
+      blending: THREE.NormalBlending
     })
   }
 
@@ -67,7 +67,7 @@ class Track {
   }
 
   animate () {
-    requestAnimationFrame(this.animate.bind(this));
+    // requestAnimationFrame(this.animate.bind(this));
   }
 }
 

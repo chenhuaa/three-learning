@@ -1,7 +1,7 @@
 /*
  * @Author: chenhua
  * @Date: 2020-08-24 10:41:07
- * @LastEditTime: 2020-08-25 17:59:10
+ * @LastEditTime: 2020-08-25 17:57:39
  * @Description: 星球组合
  * @FilePath: /three-learning/src/components/reprint/scatter/planet.js
  */
@@ -48,24 +48,39 @@ class Planet {
 
   [TRACK] () {
     let track = new THREE.Group();
-    for (let j = 0; j < 3; j++) {
+    for (let j = 0; j < 4; j++) {
       let trackGroup = new Track({
         radius: this.options.trackRadius,
       })
+      let quaternion = new THREE.Quaternion();
+      quaternion.setFromAxisAngle(new THREE.Vector3(0, 1, 0), j * Math.PI / 4);
       for(let i = 1; i < 9; i++) {
-        let arc = (Math.random() + 1) * i * Math.PI / 4;
+        let arc = i * Math.PI / 4;
+        // let arc = (Math.random() + 1) * i * Math.PI / 4;
         let icon = new Sprite({
           scale: this.options.iconSize,
           image: this.options.iconImg
         });
         icon.position.set(this.options.trackRadius * Math.sin(arc), this.options.trackRadius * Math.cos(arc), 0)
+        const vector = new THREE.Vector3(icon.position.x, icon.position.y, icon.position.z)
+        //icon.position.clone()
+        vector.applyQuaternion(quaternion); 
+        icon.position.set(vector.x, vector.y, vector.z)       
         trackGroup.add(icon);
       }
-      trackGroup.rotation.y = j * Math.PI / 3;
+      trackGroup.rotation.y = j * Math.PI / 4;
+
+      let vector = new THREE.Vector3(0, 0, 1);
+      vector.applyQuaternion(quaternion);
+      let matrix = new THREE.Matrix4();
+      matrix.makeRotationFromQuaternion(quaternion)
+      trackGroup.geometry.applyMatrix(matrix)
+
+      console.log(quaternion, vector);
 
       // 轨道向量计算
-      let vec = new THREE.Vector3(Math.sin(j * Math.PI / 3), 0, Math.cos(j * Math.PI / 3));
-      trackGroup.vec = vec;
+      // let vec = new THREE.Vector3(Math.sin(j * Math.PI / 3), 0, Math.cos(j * Math.PI / 3));
+      trackGroup.vec = vector;
       track.add(trackGroup);
     }
     this[TRACK_DATA] = track;
@@ -90,12 +105,15 @@ class Planet {
   }
 
   animate () {
-    this[TRACK_DATA].children.forEach(val => {
-      let matrix = new THREE.Matrix4();
-      matrix.makeRotationAxis(val.vec, Math.PI / 180);
-      matrix.multiply(val.matrix);
-      val.matrix = matrix;
-      val.rotation.setFromRotationMatrix(val.matrix);
+    this[TRACK_DATA].children.forEach((val) => {
+      // if (i != 1) return
+      // console.log(val, 'val')
+      // let matrix = new THREE.Matrix4();
+      // matrix.makeRotationAxis(val.vec.normalize(), Math.PI / 180);
+      // matrix.multiply(val.matrix);
+      // val.matrix = matrix;
+      // val.rotation.setFromRotationMatrix(val.matrix);
+      val.rotateOnAxis(val.vec, 0.01)
     })
     requestAnimationFrame(this.animate.bind(this));
   }
