@@ -1,7 +1,7 @@
 /*
  * @Author: chenhua
  * @Date: 2020-08-10 18:51:38
- * @LastEditTime: 2020-08-26 11:59:09
+ * @LastEditTime: 2020-08-26 14:22:56
  * @Description: 场景组合
  * @FilePath: /three-learning/src/components/reprint/scatter/reprint.js
  */
@@ -73,7 +73,7 @@ class Sphere {
 
     stars.children.forEach((d, i) => {
       group.children[i].position.x = d.x - w / 2
-      group.children[i].position.y = d.y - w / 2
+      group.children[i].position.y = d.y - h / 2
       group.children[i].position.z = Math.random() * 1000 - 500
     })
 
