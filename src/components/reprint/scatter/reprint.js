@@ -1,11 +1,12 @@
 /*
  * @Author: chenhua
  * @Date: 2020-08-10 18:51:38
- * @LastEditTime: 2020-08-25 17:51:37
+ * @LastEditTime: 2020-08-26 11:59:09
  * @Description: 场景组合
  * @FilePath: /three-learning/src/components/reprint/scatter/reprint.js
  */
 import * as THREE from 'three'
+import * as d3 from 'd3'
 import zhihu from '../../../assets/reprint/zhihu.png'
 import { TrackballControls } from  '../../../../utils/trackballControl/TrackballControl.js'
 import Planet from './planet.js'
@@ -51,14 +52,31 @@ class Sphere {
     this.scene.add(axes);
 
     let group = new THREE.Group();
+
     for (let i = 0; i < 10; i++) {
       let planet = new Planet(this.options);
-      let step = (i + 1) * 100;
-      planet.position.x = Math.random() * step - step / 2
-      planet.position.y = Math.random() * step - step / 2
-      planet.position.z = Math.random() * 1000 - 500
+      // let step = (i + 1) * 100;
+      // planet.position.x = Math.random() * step - step / 2
+      // planet.position.y = Math.random() * step - step / 2
+      // planet.position.z = Math.random() * 1000 - 500
       group.add(planet)
     }
+
+    // 包布局
+    let data = d3.hierarchy(group, d => { return d.children })
+                .sum(d => { return d.value })
+    let pack = d3.pack()
+                .size([w, h])
+                .padding(1)
+                .radius(() => { return 8 });
+    let stars = pack(data);
+
+    stars.children.forEach((d, i) => {
+      group.children[i].position.x = d.x - w / 2
+      group.children[i].position.y = d.y - w / 2
+      group.children[i].position.z = Math.random() * 1000 - 500
+    })
+
     this[GROUP] = group;
 
     this.scene.add(this[GROUP]);
