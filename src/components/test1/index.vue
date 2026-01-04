@@ -1,5 +1,10 @@
 <template>
-  <div ref="resizableDiv" class="resizable" @mousedown="onMouseDown" :style="divStyle">
+  <div
+    ref="resizableDiv"
+    class="resizable"
+    @mousedown="onMouseDown"
+    :style="divStyle"
+  >
     <div class="resizer" @mousedown="onResizeMouseDown"></div>
   </div>
 </template>
