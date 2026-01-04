@@ -100,6 +100,9 @@ onMounted(() => {
   if (div) {
     // Initialize any setup if needed
   }
+
+  // 路径：Downloads/frp_0.65.0_windows_amd64 (2)/frp_0.65.0_windows_amd64
+  // 命令：./frpc.exe -c frpc.toml
 });
 </script>
 
