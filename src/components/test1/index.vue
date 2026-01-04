@@ -37,31 +37,31 @@ const onMouseDown = (e) => {
 };
 
 const onMouseMove = (e) => {
-  // const dx = e.clientX - startPos.x;
-  // const dy = e.clientY - startPos.y;
+  const dx = e.clientX - startPos.x;
+  const dy = e.clientY - startPos.y;
   
-  // let newLeft = divPos.left + dx;
-  // let newTop = divPos.top + dy;
+  let newLeft = divPos.left + dx;
+  let newTop = divPos.top + dy;
   
-  // // Get screen dimensions
-  // const screenWidth = window.innerWidth;
-  // const screenHeight = window.innerHeight;
+  // Get screen dimensions
+  const screenWidth = window.innerWidth;
+  const screenHeight = window.innerHeight;
   
-  // // Get div dimensions
-  // const divWidth = divSize.width;
-  // const divHeight = divSize.height;
+  // Get div dimensions
+  const divWidth = divSize.width;
+  const divHeight = divSize.height;
   
-  // // Adjust position to prevent exceeding screen bounds
-  // if (newLeft < 0) newLeft = 0;
-  // if (newTop < 0) newTop = 0;
-  // if (newLeft + divWidth > screenWidth) newLeft = screenWidth - divWidth;
-  // if (newTop + divHeight > screenHeight) newTop = screenHeight - divHeight;
+  // Adjust position to prevent exceeding screen bounds
+  if (newLeft < 0) newLeft = 0;
+  if (newTop < 0) newTop = 0;
+  if (newLeft + divWidth > screenWidth) newLeft = screenWidth - divWidth;
+  if (newTop + divHeight > screenHeight) newTop = screenHeight - divHeight;
   
-  // divPos.left = newLeft;
-  // divPos.top = newTop;
+  divPos.left = newLeft;
+  divPos.top = newTop;
   
-  // startPos.x = e.clientX;
-  // startPos.y = e.clientY;
+  startPos.x = e.clientX;
+  startPos.y = e.clientY;
 };
 
 const onMouseUp = () => {
