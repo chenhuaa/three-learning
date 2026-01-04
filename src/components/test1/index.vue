@@ -5,7 +5,10 @@
     @mousedown="onMouseDown"
     :style="divStyle"
   >
-    <div class="resizer" @mousedown="onResizeMouseDown"></div>
+    <div
+      class="resizer"
+      @mousedown="onResizeMouseDown"
+    ></div>
   </div>
 </template>
 
