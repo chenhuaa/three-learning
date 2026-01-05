@@ -13,6 +13,7 @@
             <el-menu-item index="gradient04">顶点颜色渐变</el-menu-item>
             <el-menu-item index="textureTest">图片纹理贴图</el-menu-item>
             <el-menu-item index="animate01">动画</el-menu-item>
+            <el-menu-item index="columnBarChart">柱状图</el-menu-item>
           </el-menu>
         </el-aside>
         <el-main>
@@ -33,6 +34,7 @@ import canvasMap from './canvasMap/canvasMap.vue'
 import videoTexture from './videoTexture/videoTexture.vue'
 import textureTest from './textureTest/textureTest.vue'
 import animate01 from './animate01/animate01.vue'
+import columnBarChart from './test/columnBarChart/index.vue'
 export default {
   data() {
     return {
@@ -48,7 +50,8 @@ export default {
     canvasMap,
     videoTexture,
     textureTest,
-    animate01
+    animate01,
+    columnBarChart
   },
   methods: {
     handleOpen(key, path) {

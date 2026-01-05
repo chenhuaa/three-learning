@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 
 module.exports = {
+  transpileDependencies: [],
   configureWebpack: {
     module: {
       rules: [

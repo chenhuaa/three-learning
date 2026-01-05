@@ -148,6 +148,20 @@ let routes = [
         component: () => import('../components/reprint/test/test.vue')
       }
     ]
+  },
+  {
+    name: "test",
+    text: "测试",
+    path: "/test",
+    component: () => import('../components/test'),
+    children: [
+      {
+        name: 'columnBarChart',
+        text: '柱状图',
+        path: 'columnBarChart',
+        component: () => import('../components/test/columnBarChart/index.vue')
+      }
+    ]
   }
 ]
 
