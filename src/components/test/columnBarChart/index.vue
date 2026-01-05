@@ -7,7 +7,6 @@
           <div class="content">
             <div class="column-info">
               <div class="info-overflow"  @click="clickHandler(item)">
-                <!-- <vui-flag v-if="item[alias['country']]" :code="item[alias['country']]"  class="column-country" :style="getFlagStyle()"></vui-flag> -->
                 <span class="column-ip" v-if="item[alias['ip']]" :style="getLabelStyle()" :title="item[alias['ip']] || ''" >{{item[alias['ip']]}}</span>
                 <a class="column-name" v-if="item[alias['name']]" href="javascript:void(0);" :title="item[alias['name']] || ''" :style="getLabelStyle()">{{item[alias['name']] || ''}}</a>
               </div>
@@ -17,7 +16,7 @@
               </div>
             </div>
             <div class="column-charts" :style="{height: (barStyle.height || 10 )+ 'px'}"  @click="clickHandler(item)" :title="dealValue(item[alias['value']] || 0 )">
-              <i class="bg" :style="{background: barStyle.background || '#22395b'}"></i>
+              <i class="bg" :style="{background: barStyle.background || '#aaa'}"></i>
               <div class="column-charts-value " :style="getChartsStyle(item[alias['value']], index)">
                 <div class="column-charts-value-1" :style="{background: colorArr[index % colorArr.length] || 'red' }" ></div>
               </div>
@@ -363,12 +362,16 @@ export default {
       if(this.isIcon){
         // let bg = index > 2 ? `url('${this.top[3]}')` : `url('${this.top[index]}')`;
         let bg = `url('${icon}')`;
-        return { backgroundImage: bg}
+        return {
+          backgroundImage: bg
+        }
       }
       if(this.indexStyle){
         return this.indexStyle;
       }
-      return  { backgroundImage: 'none'};
+      return {
+        backgroundImage: 'none'
+      };
     },
     // 计算column的柱形图max，计算显示百分比
     computeMaxValue(arr , key){
@@ -376,9 +379,9 @@ export default {
       if(!flag){
         return
       }
-      let max = arr.reduce(( _max ,item) =>{
-        return  _max > Number( item[key] ) ? _max : Number( item[key]);
-      },0);
+      let max = arr.reduce((_max ,item) =>{
+        return _max > Number(item[key]) ? _max : Number(item[key]);
+      }, 0);
       // let p = Math.floor(Math.log(max)/Math.LN10);
       // let n = max * Math.pow(10,-p);
       // this.maxValue  = Number(Math.ceil(n)+'e'+p );

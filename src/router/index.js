@@ -160,6 +160,12 @@ let routes = [
         text: '柱状图',
         path: 'columnBarChart',
         component: () => import('../components/test/columnBarChart/index.vue')
+      },
+      {
+        name: 'table',
+        text: '表格',
+        path: 'table',
+        component: () => import('../components/test/table/index.vue')
       }
     ]
   }
