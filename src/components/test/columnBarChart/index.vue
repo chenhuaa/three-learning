@@ -7,7 +7,7 @@
           <div class="content">
             <div class="column-info">
               <div class="info-overflow"  @click="clickHandler(item)">
-                <vui-flag v-if="item[alias['country']]" :code="item[alias['country']]"  class="column-country" :style="getFlagStyle()"></vui-flag>
+                <!-- <vui-flag v-if="item[alias['country']]" :code="item[alias['country']]"  class="column-country" :style="getFlagStyle()"></vui-flag> -->
                 <span class="column-ip" v-if="item[alias['ip']]" :style="getLabelStyle()" :title="item[alias['ip']] || ''" >{{item[alias['ip']]}}</span>
                 <a class="column-name" v-if="item[alias['name']]" href="javascript:void(0);" :title="item[alias['name']] || ''" :style="getLabelStyle()">{{item[alias['name']] || ''}}</a>
               </div>
@@ -151,7 +151,7 @@ export default {
       default: ()=>{
         return{
           text:"",
-          color: '#ffffff' ,
+          color: '#000' ,
           fontSize: 14
         }
       }
@@ -194,7 +194,6 @@ export default {
     data: {
       deep: true,
       handler(val) {
-        console.log(val, ']]]]]]')
         this.chartDatas = val;
         this.maxValue = 1;
         this.computeMaxValue(this.chartDatas , this.alias['value']) ;
