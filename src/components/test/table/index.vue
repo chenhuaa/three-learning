@@ -24,7 +24,7 @@
     </div>
 
     <div>
-      <!-- Search <input name="query" v-model="searchQuery">
+      Search <input name="query" v-model="searchQuery">
       <input type="number" :value="c" @change="setC"> Celsius =
       <input type="number" :value="f" @change="setF"> Fahrenheit
       <select v-model="selected">
@@ -34,7 +34,7 @@
         <option>C</option>
       </select>
       <p>Selected: {{ selected }}</p>
-      <button>Submit</button> -->
+      <button>Submit</button>
     </div>
   </div>
   <p v-else>No matches found.</p>
