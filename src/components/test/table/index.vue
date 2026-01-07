@@ -37,6 +37,12 @@
       <button>Submit</button>
     </div>
     <div>
+      <svg width="200" height="200">
+        <g>
+          <polygon :points="points"></polygon>
+          <circle cx="100" cy="100" r="80"></circle>
+        </g>
+      </svg>
       <div v-for="(stat, key) in stats" :key="key">
         <label>{{stat.label}}</label>
         <input type="range" v-model="stat.value" min="0" max="100">
@@ -102,6 +108,15 @@ export default {
         })
       }
       return data.length ? data : this.data
+    },
+    points() {
+      const total = this.stats.length
+      return this.stats
+        .map((stat, i) => {
+          const { x, y } = valueToPoint(stat.value, i, total)
+          return `${x},${y}`
+        })
+        .join(' ')
     }
   },
   methods: {
@@ -119,6 +134,19 @@ export default {
     setF(e, v = +e.target.value) {
       this.f.value = v
       this.c.value = (v - 32) * (5 / 9)
+    },
+    valueToPoint(value, index, total) {
+      const x = 0
+      const y = -value * 0.8
+      const angle = ((Math.PI * 2) / total) * index
+      const cos = Math.cos(angle)
+      const sin = Math.sin(angle)
+      const tx = x * cos - y * sin + 100
+      const ty = x * sin + y * cos + 100
+      return {
+        x: tx,
+        y: ty
+      }
     }
   }
 }
