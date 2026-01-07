@@ -22,6 +22,11 @@
       {{ count }}
       <button @click="count++">Count</button>
     </div>
+
+    <div>
+      <input type="number" :value="c" @change="setC"> Celsius =
+      <input type="number" :value="f" @change="setF"> Fahrenheit
+    </div>
   </div>
   <p v-else>No matches found.</p>
 
@@ -53,7 +58,9 @@ export default {
       sortOrders: {
         name: 1,
         power: 1
-      }
+      },
+      c: 0,
+      f: 32
     }
   },
   computed: {
@@ -78,6 +85,14 @@ export default {
     },
     capitalize(str) {
       return str.charAt(0).toUpperCase() + str.slice(1)
+    },
+    setC(e, v = +e.target.value) {
+      this.c.value = v
+      this.f.value = v * (9 / 5) + 32
+    },
+    setF(e, v = +e.target.value) {
+      this.f.value = v
+      this.c.value = (v - 32) * (5 / 9)
     }
   }
 }
