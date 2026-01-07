@@ -205,4 +205,9 @@ th.active .arrow {
   border-right: 4px solid transparent;
   border-top: 4px solid #fff;
 }
+
+polygon {
+  fill: #42b983;
+  opacity: 0.75;
+}
 </style>
