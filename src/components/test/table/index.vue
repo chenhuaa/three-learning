@@ -2,15 +2,15 @@
   <table v-if="filteredData.length">
     <thead>
       <tr>
-        <th v-for="key in columns" @click="sortBy(key)" :class="{ active: sortKey == key }">
+        <th v-for="(key, index) in columns" :key="index" @click="sortBy(key)" :class="{ active: sortKey == key }">
           {{ capitalize(key) }}
           <span class="arrow" :class="sortOrders[key] > 0 ? 'asc' : 'dsc'"></span>
         </th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="entry in filteredData">
-        <td v-for="key in columns">
+      <tr v-for="(entry, ind) in filteredData" :key="ind">
+        <td v-for="(key, index) in columns" :key="index">
           {{ entry[key] }}
         </td>
       </tr>
@@ -50,15 +50,16 @@ export default {
   computed: {
     filteredData() {
       const key = this.sortKey.value
+      let data = []
       if (key) {
         const order = this.sortOrders[key]
-        this.data = this.data.slice().sort((a, b) => {
+        data = this.data.slice().sort((a, b) => {
           a = a[key]
           b = b[key]
           return (a === b ? 0 : a > b ? 1 : -1) * order
         })
       }
-      return this.data
+      return data.length ? data : this.data
     }
   },
   methods: {
