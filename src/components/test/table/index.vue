@@ -1,22 +1,30 @@
 <template>
-  <table v-if="filteredData.length">
-    <thead>
-      <tr>
-        <th v-for="(key, index) in columns" :key="index" @click="sortBy(key)" :class="{ active: sortKey == key }">
-          {{ capitalize(key) }}
-          <span class="arrow" :class="sortOrders[key] > 0 ? 'asc' : 'dsc'"></span>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="(entry, ind) in filteredData" :key="ind">
-        <td v-for="(key, index) in columns" :key="index">
-          {{ entry[key] }}
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div v-if="filteredData.length">
+    <table>
+      <thead>
+        <tr>
+          <th v-for="(key, index) in columns" :key="index" @click="sortBy(key)" :class="{ active: sortKey == key }">
+            {{ capitalize(key) }}
+            <span class="arrow" :class="sortOrders[key] > 0 ? 'asc' : 'dsc'"></span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(entry, ind) in filteredData" :key="ind">
+          <td v-for="(key, index) in columns" :key="index">
+            {{ entry[key] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div>
+      {{ count }}
+      <button @click="count++">Count</button>
+    </div>
+  </div>
   <p v-else>No matches found.</p>
+
 </template>
 
 <script setup>
@@ -40,6 +48,7 @@ export default {
   },
   data() {
     return {
+      count: 0,
       sortKey: '',
       sortOrders: {
         name: 1,

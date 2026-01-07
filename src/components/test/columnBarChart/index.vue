@@ -40,19 +40,19 @@ export default {
       type: Array,
       default: () => [
       {
-        country:'CN',
+        country: 'CN',
         ip: '10.23.25.66',
         name: 'name1',
         value: '560'
       },
       {
-        country:'CN',
+        country: 'CN',
         ip: '165.235.12.22',
         name: 'name2',
         value: '200'
       },
       {
-        country:'CN',
+        country: 'CN',
         ip: '132.45.25.135',
         name: 'name3',
         value: '140'
@@ -104,21 +104,21 @@ export default {
     },
     gap: {
       type: Number,
-      default: ()=> 1
+      default: () => 1
     },
     rowGap:{
       type: Number,
-      default: ()=>0
+      default: () => 0
     },
     columnGap:{
       type: Number,
-      default: ()=>0
+      default: () => 0
     },
     alias: {
       type: Object,
       default: () => {
         return {
-          country:'country',
+          country: 'country',
           ip: 'ip',
           name: 'name',
           value: 'value'
@@ -127,29 +127,29 @@ export default {
     },
     isIcon:{
       type: Boolean,
-      default: ()=>true,
+      default: () => true,
     },
     indexShow:{
       type: Boolean,
-      default: ()=>true,
+      default: () => true,
     },
     indexStyle:{
       type: Object,
-      default: ()=>{
+      default: () => {
         return{
-          fontSize:'16px'
+          fontSize: '16px'
         }
       }
     },
     startIndex:{
       type: Number,
-      default: ()=>1
+      default: () => 1
     },
     unit:{
       type: Object,
-      default: ()=>{
+      default: () => {
         return{
-          text:"",
+          text: "",
           color: '#000' ,
           fontSize: 14
         }
@@ -157,7 +157,7 @@ export default {
     },
     flagStyle:{
       type: Object,
-      default:()=>{
+      default:() => {
         return{
           width: 30
         }
@@ -165,27 +165,27 @@ export default {
     },
     isThousandths:{
       type: Boolean,
-      default: ()=> false
+      default: () => false
     },
     isEvenly:{
       type: Boolean,
-      default: ()=> true
+      default: () => true
     },
     className:{
       type: String,
-      default: ()=> ''
+      default: () => ''
     },
     showNoData:{
       type: Boolean,
-      default: () =>true
+      default: () => true
     }
   },
   data() {
     return {
       chartDatas: [],
-      colorArr:[], // 颜色
+      colorArr: [], // 颜色
       maxValue: 1 ,
-      top:[imageFn('#FEEF2B'),imageFn('#B5B4B5'),imageFn('#FD8C17'),imageFn('#63a6e9')],  // 只考虑前三
+      top: [imageFn('#FEEF2B'),imageFn('#B5B4B5'),imageFn('#FD8C17'),imageFn('#63a6e9')],  // 只考虑前三
       rowsHeight: 42,
     }
   },
