@@ -24,9 +24,7 @@
     </div>
 
     <div>
-      <form id="search">
-        Search <input name="query" v-model="searchQuery">
-      </form>
+      Search <input name="query" v-model="searchQuery">
       <input type="number" :value="c" @change="setC"> Celsius =
       <input type="number" :value="f" @change="setF"> Fahrenheit
     </div>
