@@ -36,6 +36,13 @@
       <p>Selected: {{ selected }}</p>
       <button>Submit</button>
     </div>
+    <div>
+      <div v-for="stat in stats">
+        <label>{{stat.label}}</label>
+        <input type="range" v-model="stat.value" min="0" max="100">
+        <span>{{stat.value}}</span>
+      </div>
+    </div>
   </div>
   <p v-else>No matches found.</p>
 
@@ -71,7 +78,15 @@ export default {
       c: 0,
       f: 32,
       searchQuery: '',
-      selected: "A"
+      selected: "A",
+      stats: [
+        { label: 'A', value: 100 },
+        { label: 'B', value: 100 },
+        { label: 'C', value: 100 },
+        { label: 'D', value: 100 },
+        { label: 'E', value: 100 },
+        { label: 'F', value: 100 }
+      ]
     }
   },
   computed: {
