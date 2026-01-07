@@ -27,6 +27,13 @@
       Search <input name="query" v-model="searchQuery">
       <input type="number" :value="c" @change="setC"> Celsius =
       <input type="number" :value="f" @change="setF"> Fahrenheit
+      <select v-model="selected">
+        <option disabled value="">Please select one</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+      </select>
+      <p>Selected: {{ selected }}</p>
     </div>
   </div>
   <p v-else>No matches found.</p>
@@ -62,7 +69,8 @@ export default {
       },
       c: 0,
       f: 32,
-      searchQuery: ''
+      searchQuery: '',
+      selected: "A"
     }
   },
   computed: {
