@@ -34,6 +34,7 @@
         <option>C</option>
       </select>
       <p>Selected: {{ selected }}</p>
+      <button>Submit</button>
     </div>
   </div>
   <p v-else>No matches found.</p>
