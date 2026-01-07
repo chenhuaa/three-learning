@@ -37,7 +37,7 @@
       <button>Submit</button>
     </div>
     <div>
-      <div v-for="stat in stats">
+      <div v-for="(stat, key) in stats" :key="key">
         <label>{{stat.label}}</label>
         <input type="range" v-model="stat.value" min="0" max="100">
         <span>{{stat.value}}</span>
