@@ -156,6 +156,12 @@ let routes = [
     component: () => import('../components/test'),
     children: [
       {
+        name: 'resize',
+        text: '可拖拽框',
+        path: 'resize',
+        component: () => import('../components/test/resize/index.vue')
+      },
+      {
         name: 'columnBarChart',
         text: '柱状图',
         path: 'columnBarChart',

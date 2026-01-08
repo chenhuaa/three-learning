@@ -7,7 +7,7 @@
     <TransitionGroup tag="ul" name="fade" class="container">
       <li v-for="item in items" class="item" :key="item">
         {{ item }}
-        <button @click="remove(item)">x</button>
+        <button @click="remove(item)"> x </button>
       </li>
     </TransitionGroup>
   </div>
