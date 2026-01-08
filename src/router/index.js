@@ -166,6 +166,12 @@ let routes = [
         text: '表格',
         path: 'table',
         component: () => import('../components/test/table/index.vue')
+      },
+      {
+        name: 'list',
+        text: '列表',
+        path: 'list',
+        component: () => import('../components/test/list/index.vue')
       }
     ]
   }

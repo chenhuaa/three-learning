@@ -15,6 +15,7 @@
             <el-menu-item index="animate01">动画</el-menu-item>
             <el-menu-item index="columnBarChart">柱状图</el-menu-item>
             <el-menu-item index="table">表格</el-menu-item>
+            <el-menu-item index="list">列表</el-menu-item>
           </el-menu>
         </el-aside>
         <el-main>
@@ -37,6 +38,8 @@ import textureTest from './textureTest/textureTest.vue'
 import animate01 from './animate01/animate01.vue'
 import columnBarChart from './test/columnBarChart/index.vue'
 import table from './test/table/index.vue'
+import list from './test/list/index.vue'
+
 export default {
   data() {
     return {
@@ -54,7 +57,8 @@ export default {
     textureTest,
     animate01,
     columnBarChart,
-    table
+    table,
+    list
   },
   methods: {
     handleOpen(key, path) {
