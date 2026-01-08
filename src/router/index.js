@@ -184,6 +184,12 @@ let routes = [
         text: '模态框',
         path: 'modal',
         component: () => import('../components/test/modal/index.vue')
+      },
+      {
+        name: 'editor',
+        text: 'markdown编辑器',
+        path: 'editor',
+        component: () => import('../components/test/editor/index.vue')
       }
     ]
   }
