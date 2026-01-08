@@ -41,6 +41,7 @@
         <g>
           <polygon :points="points"></polygon>
           <circle cx="100" cy="100" r="80"></circle>
+          <text v-for="(stat, key) in stats" :x="pointData[key].x" :y="pointData[key].y">{{stat.label}}</text>
         </g>
       </svg>
       <div v-for="(stat, key) in stats" :key="key">
@@ -92,7 +93,8 @@ export default {
         { label: 'D', value: 100 },
         { label: 'E', value: 100 },
         { label: 'F', value: 100 }
-      ]
+      ],
+      pointData: []
     }
   },
   computed: {
@@ -114,6 +116,7 @@ export default {
       return this.stats
         .map((stat, i) => {
           const { x, y } = this.valueToPoint(stat.value, i, total)
+          this.pointData.push({x, y})
           return `${x},${y}`
         })
         .join(' ')
@@ -209,5 +212,10 @@ th.active .arrow {
 polygon {
   fill: #42b983;
   opacity: 0.75;
+}
+
+circle {
+  fill: transparent;
+  stroke: #999;
 }
 </style>
