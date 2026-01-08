@@ -172,6 +172,12 @@ let routes = [
         text: '列表',
         path: 'list',
         component: () => import('../components/test/list/index.vue')
+      },
+      {
+        name: 'modal',
+        text: '模态框',
+        path: 'modal',
+        component: () => import('../components/test/modal/index.vue')
       }
     ]
   }
