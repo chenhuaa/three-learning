@@ -49,6 +49,10 @@
         <input type="range" v-model="stat.value" min="0" max="100">
         <span>{{stat.value}}</span>
       </div>
+      <form id="add">
+        <input name="newlabel" v-model="newLabel">
+        <button @click="add">Add a Stat</button>
+      </form>
     </div>
   </div>
   <p v-else>No matches found.</p>
@@ -94,7 +98,8 @@ export default {
         { label: 'E', value: 100 },
         { label: 'F', value: 100 }
       ],
-      pointData: []
+      pointData: [],
+      newLabel: ''
     }
   },
   computed: {
@@ -150,6 +155,15 @@ export default {
         x: tx,
         y: ty
       }
+    },
+    add(e) {
+      e.preventDefault()
+      if (!this.newLabel) return
+      this.stats.push({
+        label: this.newLabel,
+        value: 100
+      })
+      this.newLabel = ''
     }
   }
 }
