@@ -48,6 +48,7 @@
         <label>{{stat.label}}</label>
         <input type="range" v-model="stat.value" min="0" max="100">
         <span>{{stat.value}}</span>
+        <button @click="remove(stat)" class="remove">X</button>
       </div>
       <form id="add">
         <input name="newlabel" v-model="newLabel">
@@ -117,10 +118,9 @@ export default {
       return data.length ? data : this.data
     },
     points() {
-      const total = this.stats.length
       return this.stats
         .map((stat, i) => {
-          const { x, y } = this.valueToPoint(stat.value, i, total)
+          const { x, y } = this.valueToPoint(stat.value, i, this.stats.length)
           this.pointData.push({x, y})
           return `${x},${y}`
         })
@@ -164,6 +164,13 @@ export default {
         value: 100
       })
       this.newLabel = ''
+    },
+    remove(stat) {
+      if (this.stats.length > 3) {
+        this.stats.splice(this.stats.indexOf(stat), 1)
+      } else {
+        alert("Can't delete more!")
+      }
     }
   }
 }
